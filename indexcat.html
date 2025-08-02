@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hlo Cutie Pie 😽</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .cat {
+      width: 120px;
+      height: 120px;
+      background: orange;
+      border-radius: 50%;
+      position: relative;
+      animation: bounce 2s infinite;
+      box-shadow: 0 0 20px rgba(255, 200, 100, 0.8);
+    }
+
+    /* Ears */
+    .cat::before,
+    .cat::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 30px 40px 30px;
+      border-color: transparent transparent orange transparent;
+    }
+
+    .cat::before {
+      top: -30px;
+      left: -10px;
+      transform: rotate(-20deg);
+    }
+
+    .cat::after {
+      top: -30px;
+      right: -10px;
+      transform: rotate(20deg);
+    }
+
+    /* Eyes */
+    .eye {
+      position: absolute;
+      background: black;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      top: 40px;
+    }
+
+    .eye.left {
+      left: 30px;
+    }
+
+    .eye.right {
+      right: 30px;
+    }
+
+    /* Nose */
+    .nose {
+      position: absolute;
+      top: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 10px;
+      background: pink;
+      border-radius: 50%;
+    }
+
+    /* Animation */
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    h2 {
+      font-family: "Comic Sans MS", cursive;
+      color: #ff66cc;
+      margin-top: 20px;
+      text-shadow: 0 0 5px white;
+    }
+  </style>
+</head>
+<body onclick="restartBounce()">
+  <div class="cat" id="cat">
+    <div class="eye left"></div>
+    <div class="eye right"></div>
+    <div class="nose"></div>
+  </div>
+  <h2>hlo cutie pie 😘</h2>
+
+  <script>
+    function restartBounce() {
+      const cat = document.getElementById('cat');
+      cat.style.animation = 'none';
+      void cat.offsetWidth; // reflow hack
+      cat.style.animation = 'bounce 2s infinite';
+    }
+  </script>
+</body>
+</html>
